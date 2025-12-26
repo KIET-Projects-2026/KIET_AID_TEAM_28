@@ -1,27 +1,27 @@
-From Scratch Translation Models (English ↔ Telugu)
-
-TEAM 28 – KIET AID
-
+From-Scratch Neural Machine Translation (English ↔ Telugu)
+TEAM 28 — KIET AID
 Overview
 
-This project implements Neural Machine Translation (NMT) for English ↔ Telugu using Transformer-based models.
-We focus on understanding translation systems from first principles, while also comparing performance with state-of-the-art pre-trained models.
+This project implements a Neural Machine Translation (NMT) system for English ↔ Telugu using Transformer-based sequence-to-sequence models built from first principles.
+The goal is to deeply understand the theory, implementation, training, and evaluation of modern translation models and to compare them against strong pre-trained baselines.
 
-A web-based interface is provided to demonstrate real-time translation using a React (Vite) frontend and a Flask backend.
+A web-based interface is provided using React (Vite) on the frontend and Flask on the backend to demonstrate real-time translation.
 
-Objectives
+Key Objectives
 
-Build a Transformer encoder–decoder model from scratch
+Design and implement a Transformer encoder–decoder model from scratch
 
-Design a complete data preprocessing and training pipeline
+Build a complete data processing and training pipeline
 
-Evaluate models using BLEU, sacreBLEU, and chrF
+Evaluate translations using standard MT metrics
 
-Compare from-scratch models with Google FLAN and Facebook NLLB
+Compare performance with pre-trained multilingual models
 
-Deliver a reproducible repository with clear documentation
+Ensure reproducibility and clear documentation
 
-Tech Stack
+Deliver a functional end-to-end translation web application
+
+Technology Stack
 Frontend
 
 Vite
@@ -30,92 +30,144 @@ React.js
 
 JavaScript, HTML, CSS
 
+REST API integration
+
 Backend
 
 Flask (Python)
 
-REST API for translation inference
+Model inference APIs
+
+Request handling & response formatting
 
 Machine Learning
 
 Neural Networks
 
-Transformer Architecture
+Transformer (Encoder–Decoder) Architecture
 
 PyTorch
 
-SentencePiece Tokenization
+SentencePiece (BPE / Unigram)
 
-Pre-trained Models
+Mixed precision training (FP16)
+
+Pre-trained Models (Baselines)
 
 Google FLAN
 
-Facebook NLLB
+Facebook NLLB (No Language Left Behind)
 
-Models Implemented
-From-Scratch Transformer
-
-Encoder–Decoder architecture
-
-Multi-Head Attention
-
-Positional Encoding
-
-Teacher forcing with cross-entropy loss
-
-Baseline Models (Comparison)
-
-Google FLAN (instruction-tuned)
-
-Facebook NLLB (multilingual translation)
-
-Datasets
-
-Samanantar (English–Indic parallel corpus)
-
-OPUS / Tatoeba (clean aligned sentences)
-
-FLORES-101 (evaluation benchmark)
-
-All datasets are used in accordance with their licenses.
-
-Evaluation Metrics
+Evaluation & Tooling
 
 BLEU / sacreBLEU
 
 chrF
 
-Qualitative error analysis
+Git, GitHub, Git LFS
+
+TensorBoard / Weights & Biases
+
+Model Approaches
+1. From-Scratch Transformer
+
+Token embeddings + positional encoding
+
+Multi-head self-attention
+
+Encoder–decoder cross-attention
+
+Teacher forcing with cross-entropy loss
+
+Label smoothing and dropout for regularization
+
+2. Pre-trained Baselines
+
+Used only for comparison and benchmarking:
+
+Google FLAN (instruction-tuned LLM)
+
+Facebook NLLB (multilingual translation-focused model)
+
+Datasets
+
+Samanantar — large English–Indic parallel corpus
+
+OPUS / Tatoeba — clean aligned sentence pairs
+
+FLORES-101 — high-quality evaluation benchmark
+
+All datasets are cleaned, filtered, aligned, and split into train / validation / test sets with license compliance.
+
+Evaluation Metrics
+
+BLEU / sacreBLEU — standard translation quality metrics
+
+chrF — character-level metric suitable for Telugu
+
+Qualitative error analysis on sampled translations
 
 Project Structure
 project-root/
-├── frontend/        # Vite + React application
-├── backend/         # Flask API
-├── src/             # Model, training, evaluation code
-├── data/            # Raw and processed datasets
-├── experiments/     # Experiment configurations
-├── notebooks/       # Analysis and exploration
-├── checkpoints/     # Model checkpoints (Git LFS)
-├── docs/            # Architecture & results
-└── scripts/         # Training and evaluation scripts
+├── README.md
+├── data/
+│   ├── raw/
+│   ├── processed/
+│   └── tokenized/
+├── src/
+│   ├── data/
+│   ├── model/
+│   ├── train/
+│   ├── eval/
+│   └── utils/
+├── frontend/          # Vite + React
+├── backend/           # Flask API
+├── experiments/
+├── notebooks/
+├── checkpoints/       # tracked via Git LFS / ignored by Git
+├── logs/
+├── docs/
+└── scripts/
 
-Running the Project
+Running the Application
 Backend (Flask)
 cd backend
 pip install -r requirements.txt
 python app.py
+
+
+Runs at:
+
+http://127.0.0.1:5000
 
 Frontend (Vite + React)
 cd frontend
 npm install
 npm run dev
 
-Key Learnings
 
-Transformer internals and attention mechanisms
+Runs at:
 
-Challenges of low-resource language translation
+http://localhost:5173
 
-Importance of tokenization and data quality
+Experiments Conducted
 
-Trade-offs between training from scratch and fine-tuning pre-trained models
+Model scaling (small vs standard Transformer)
+
+Shared vs separate vocabularies
+
+Effect of label smoothing and dropout
+
+Ablation studies (positional encoding, attention heads)
+
+From-scratch model vs pre-trained baselines
+
+Practical Notes
+
+GPU recommended (16 GB+ preferred)
+
+Gradient clipping and accumulation used
+
+Random seeds fixed for reproducibility
+
+Checkpoints and tokenizer configs saved
