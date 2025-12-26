@@ -108,6 +108,8 @@ chrF — character-level metric suitable for Telugu
 Qualitative error analysis on sampled translations
 
 Project Structure
+
+
 project-root/
 ├── README.md
 ├── data/
@@ -130,6 +132,7 @@ project-root/
 └── scripts/
 
 Running the Application
+
 Backend (Flask)
 cd backend
 pip install -r requirements.txt
@@ -141,6 +144,7 @@ Runs at:
 http://127.0.0.1:5000
 
 Frontend (Vite + React)
+
 cd frontend
 npm install
 npm run dev
