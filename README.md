@@ -131,30 +131,30 @@ project-root/
 ├── logs/
 ├── docs/
 └── scripts/
+
 Running the Application
 Backend (Flask)
-bash
-Copy code
 cd backend
 pip install -r requirements.txt
 python app.py
+
+
 Server runs at:
 
-cpp
-Copy code
 http://127.0.0.1:5000
+
 Frontend (Vite + React)
-bash
-Copy code
 cd frontend
 npm install
 npm run dev
+
+
 Application runs at:
 
-arduino
-Copy code
 http://localhost:5173
+
 Experiments Conducted
+
 Transformer size comparison (small vs standard)
 
 Shared vs separate vocabularies
@@ -168,6 +168,7 @@ From-scratch vs pre-trained comparison
 Attention and positional encoding ablations
 
 Reproducibility
+
 Fixed random seeds
 
 Version-controlled configurations
@@ -179,8 +180,26 @@ Checkpointed training states
 Logged metrics and experiments
 
 Hardware & Compute
+
 GPU recommended (16GB+ VRAM)
 
 Gradient accumulation for low-resource setups
 
 Mixed precision for faster training
+
+Team
+
+TEAM 28 — KIET AID
+From Scratch Translation Models
+
+Acknowledgements
+
+Vaswani et al., Attention Is All You Need
+
+Hugging Face Transformers
+
+AI4Bharat
+
+Meta AI (NLLB)
+
+Google Research (FLAN)
