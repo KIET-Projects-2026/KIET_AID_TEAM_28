@@ -132,65 +132,7 @@ project-root/
 ├── docs/
 └── scripts/
 
-## Running the Application
 
-### Backend (Flask API)
 
-Navigate to the backend directory and install dependencies:
 
-```bash
-cd backend
-pip install -r requirements.txt
-python app.py
-The Flask server will start at:
 
-cpp
-Copy code
-http://127.0.0.1:5000
-Frontend (Vite + React)
-Navigate to the frontend directory and install dependencies:
-
-bash
-Copy code
-cd frontend
-npm install
-npm run dev
-The web application will be available at:
-
-arduino
-Copy code
-http://localhost:5173
-Experiments & Analysis
-To understand the impact of different design choices, the following experiments were conducted:
-
-Transformer architecture scaling (small vs standard models)
-
-Shared versus separate token vocabularies
-
-Effect of label smoothing
-
-Dropout rate tuning
-
-From-scratch Transformer vs pre-trained models
-
-Ablation studies on attention heads and positional encoding
-
-Reproducibility
-The project is designed to be fully reproducible:
-
-Fixed random seeds across experiments
-
-Version-controlled configuration files
-
-Saved tokenizer models and vocabularies
-
-Periodic and best-model checkpoints
-
-Logged training and evaluation metrics
-
-Hardware & Compute Requirements
-GPU recommended (minimum 16GB VRAM)
-
-Gradient accumulation for memory-constrained environments
-
-Mixed-precision (FP16) training for faster computation
