@@ -1,115 +1,116 @@
-From-Scratch Neural Machine Translation (English ↔ Telugu)
-TEAM 28 — KIET AID
-Overview
+# From Scratch Neural Machine Translation (English ↔ Telugu)
+### TEAM 28 — KIET AID
 
-This project implements a Neural Machine Translation (NMT) system for English ↔ Telugu using Transformer-based sequence-to-sequence models built from first principles.
-The goal is to deeply understand the theory, implementation, training, and evaluation of modern translation models and to compare them against strong pre-trained baselines.
+---
 
-A web-based interface is provided using React (Vite) on the frontend and Flask on the backend to demonstrate real-time translation.
+## Overview
 
-Key Objectives
+This project explores **Neural Machine Translation (NMT)** by building a **Transformer-based encoder–decoder model from scratch** for **English ↔ Telugu** translation.  
+The objective is to understand the internal mechanics of modern translation systems and compare a custom-built model against **state-of-the-art pre-trained models**.
 
-Design and implement a Transformer encoder–decoder model from scratch
+In addition to model training and evaluation, we provide a **full-stack web application** that allows users to translate text through a browser interface.
 
-Build a complete data processing and training pipeline
+---
 
-Evaluate translations using standard MT metrics
+## Key Objectives
 
-Compare performance with pre-trained multilingual models
+- Implement a **Transformer architecture from first principles**
+- Design a complete **data processing and training pipeline**
+- Evaluate translation quality using standard metrics
+- Compare results with **pre-trained multilingual models**
+- Deliver a reproducible research-oriented repository
+- Provide an interactive **web-based translation demo**
 
-Ensure reproducibility and clear documentation
+---
 
-Deliver a functional end-to-end translation web application
+## System Architecture
 
-Technology Stack
-Frontend
+User (Browser)
+↓
+React + Vite Frontend
+↓ REST API
+Flask Backend (Inference Server)
+↓
+Neural Translation Models
 
-Vite
+yaml
+Copy code
 
-React.js
+---
 
-JavaScript, HTML, CSS
+## Technology Stack
 
-REST API integration
+### Frontend
+- **Vite**
+- **React.js**
+- JavaScript, HTML, CSS
+- REST API integration
 
-Backend
+### Backend
+- **Flask (Python)**
+- RESTful API endpoints
+- Model inference and request handling
 
-Flask (Python)
+### Machine Learning & NLP
+- **Neural Networks**
+- **Transformer (Encoder–Decoder)**
+- **PyTorch**
+- **SentencePiece (BPE / Unigram)**
+- Mixed Precision Training (FP16)
 
-Model inference APIs
+### Pre-trained Models (Baselines)
+- **Google FLAN**
+- **Facebook NLLB (No Language Left Behind)**
 
-Request handling & response formatting
+### Evaluation & Experimentation
+- BLEU / sacreBLEU
+- chrF
+- TensorBoard / Weights & Biases
 
-Machine Learning
+---
 
-Neural Networks
+## Model Implementations
 
-Transformer (Encoder–Decoder) Architecture
+### 1. Transformer (From Scratch)
+- Multi-Head Self-Attention
+- Positional Encoding
+- Feed-Forward Networks
+- Residual Connections + Layer Normalization
+- Teacher Forcing with Cross-Entropy Loss
+- Label Smoothing and Dropout
 
-PyTorch
+### 2. Pre-trained Baselines
+- Google FLAN: instruction-tuned multilingual model
+- Facebook NLLB: large-scale multilingual translation model  
+Used strictly for **benchmark comparison**
 
-SentencePiece (BPE / Unigram)
+---
 
-Mixed precision training (FP16)
+## Data Sources
 
-Pre-trained Models (Baselines)
+- **Samanantar** – Large-scale English–Indic parallel corpus
+- **OPUS / Tatoeba** – Clean aligned sentence pairs
+- **FLORES-101** – High-quality evaluation benchmark
 
-Google FLAN
+All datasets are processed with:
+- UTF-8 normalization
+- Length filtering
+- Deduplication
+- Train / Validation / Test splits
 
-Facebook NLLB (No Language Left Behind)
+---
 
-Evaluation & Tooling
+## Evaluation Metrics
 
-BLEU / sacreBLEU
+- **BLEU / sacreBLEU** – Standard MT evaluation
+- **chrF** – Character-level metric (effective for Telugu)
+- Qualitative error analysis on sampled outputs
 
-chrF
+---
 
-Git, GitHub, Git LFS
+## Project Structure
 
-TensorBoard / Weights & Biases
-
-Model Approaches
-1. From-Scratch Transformer
-
-Token embeddings + positional encoding
-
-Multi-head self-attention
-
-Encoder–decoder cross-attention
-
-Teacher forcing with cross-entropy loss
-
-Label smoothing and dropout for regularization
-
-2. Pre-trained Baselines
-
-Used only for comparison and benchmarking:
-
-Google FLAN (instruction-tuned LLM)
-
-Facebook NLLB (multilingual translation-focused model)
-
-Datasets
-
-Samanantar — large English–Indic parallel corpus
-
-OPUS / Tatoeba — clean aligned sentence pairs
-
-FLORES-101 — high-quality evaluation benchmark
-
-All datasets are cleaned, filtered, aligned, and split into train / validation / test sets with license compliance.
-
-Evaluation Metrics
-
-BLEU / sacreBLEU — standard translation quality metrics
-
-chrF — character-level metric suitable for Telugu
-
-Qualitative error analysis on sampled translations
-
-Project Structure
-
-
+```text
 project-root/
 ├── README.md
 ├── data/
@@ -122,56 +123,64 @@ project-root/
 │   ├── train/
 │   ├── eval/
 │   └── utils/
-├── frontend/          # Vite + React
-├── backend/           # Flask API
+├── frontend/            # Vite + React
+├── backend/             # Flask API
 ├── experiments/
 ├── notebooks/
-├── checkpoints/       # tracked via Git LFS / ignored by Git
+├── checkpoints/         # ignored / Git LFS
 ├── logs/
 ├── docs/
 └── scripts/
-
 Running the Application
-
 Backend (Flask)
+bash
+Copy code
 cd backend
 pip install -r requirements.txt
 python app.py
+Server runs at:
 
-
-Runs at:
-
+cpp
+Copy code
 http://127.0.0.1:5000
-
 Frontend (Vite + React)
-
+bash
+Copy code
 cd frontend
 npm install
 npm run dev
+Application runs at:
 
-
-Runs at:
-
+arduino
+Copy code
 http://localhost:5173
-
 Experiments Conducted
-
-Model scaling (small vs standard Transformer)
+Transformer size comparison (small vs standard)
 
 Shared vs separate vocabularies
 
-Effect of label smoothing and dropout
+Label smoothing ablation
 
-Ablation studies (positional encoding, attention heads)
+Dropout tuning
 
-From-scratch model vs pre-trained baselines
+From-scratch vs pre-trained comparison
 
-Practical Notes
+Attention and positional encoding ablations
 
-GPU recommended (16 GB+ preferred)
+Reproducibility
+Fixed random seeds
 
-Gradient clipping and accumulation used
+Version-controlled configurations
 
-Random seeds fixed for reproducibility
+Saved tokenizer models
 
-Checkpoints and tokenizer configs saved
+Checkpointed training states
+
+Logged metrics and experiments
+
+Hardware & Compute
+GPU recommended (16GB+ VRAM)
+
+Gradient accumulation for low-resource setups
+
+Mixed precision for faster training
