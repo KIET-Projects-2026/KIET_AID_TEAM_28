@@ -1,11 +1,11 @@
-# From Scratch Neural Machine Translation (English ↔ Telugu)
+# From Scratch Neural Machine Translation (Telugu ↔ English)
 ### TEAM 28 — KIET AID
 
 ---
 
 ## Overview
 
-This project explores **Neural Machine Translation (NMT)** by building a **Transformer-based encoder–decoder model from scratch** for **English ↔ Telugu** translation.  
+This project explores **Neural Machine Translation (NMT)** by building a **Transformer-based encoder–decoder model from scratch** for **Telugu ↔ English** translation.  
 The objective is to understand the internal mechanics of modern translation systems and compare a custom-built model against **state-of-the-art pre-trained models**.
 
 In addition to model training and evaluation, we provide a **full-stack web application** that allows users to translate text through a browser interface.
