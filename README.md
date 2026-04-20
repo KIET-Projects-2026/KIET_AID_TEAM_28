@@ -45,6 +45,7 @@ Copy code
 - **React.js**
 - JavaScript, HTML, CSS
 - REST API integration
+- Tailwind CSS
 
 ### Backend
 - **Flask (Python)**
